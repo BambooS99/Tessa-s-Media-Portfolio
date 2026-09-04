@@ -19,20 +19,19 @@ export default function ContactForm() {
     setError(null);
 
     const form = e.currentTarget;
-    const payload = Object.fromEntries(new FormData(form).entries());
+    const body = new URLSearchParams();
+    new FormData(form).forEach((value, key) => body.append(key, String(value)));
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
       });
-      const json = await res.json();
 
-      if (!res.ok || !json.ok) {
-        throw new Error(json.error || "Something went wrong.");
-      }
+      if (!res.ok) throw new Error("Something went wrong.");
 
+      form.reset();
       setStatus("sent");
     } catch (err) {
       setStatus("error");
@@ -54,69 +53,44 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-[440px] flex flex-col gap-7">
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      onSubmit={handleSubmit}
+      className="max-w-[440px] flex flex-col gap-7"
+    >
+      <input type="hidden" name="form-name" value="contact" />
       <div className="grid grid-cols-2 gap-6">
         <div>
-          <label htmlFor="name" className={labelClasses}>
-            Name
-          </label>
+          <label htmlFor="name" className={labelClasses}>Name</label>
           <input id="name" name="name" type="text" required className={fieldClasses} placeholder="Your name" />
         </div>
         <div>
-          <label htmlFor="email" className={labelClasses}>
-            Email
-          </label>
+          <label htmlFor="email" className={labelClasses}>Email</label>
           <input id="email" name="email" type="email" required className={fieldClasses} placeholder="you@email.com" />
         </div>
       </div>
 
       <div>
-        <label htmlFor="occasion" className={labelClasses}>
-          What are you here to see more of?
-        </label>
-        <input
-          id="occasion"
-          name="occasion"
-          type="text"
-          className={fieldClasses}
-          placeholder="Portrait session, event, editorial…"
-        />
+        <label htmlFor="occasion" className={labelClasses}>What are you here to see more of?</label>
+        <input id="occasion" name="occasion" type="text" className={fieldClasses} placeholder="Portrait session, event, editorial..." />
       </div>
 
       <div>
-        <label htmlFor="message" className={labelClasses}>
-          Message
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          rows={5}
-          className={`${fieldClasses} resize-none`}
-          placeholder="Tell me a bit about what you have in mind."
-        />
+        <label htmlFor="message" className={labelClasses}>Message</label>
+        <textarea id="message" name="message" required rows={5} className={`${fieldClasses} resize-none`} placeholder="Tell me a bit about what you have in mind." />
       </div>
 
-      {/* Honeypot — hidden from real visitors, bots tend to fill every field. */}
-      <input
-        type="text"
-        name="company"
-        tabIndex={-1}
-        autoComplete="off"
-        className="hidden"
-        aria-hidden="true"
-      />
+      <p className="sr-only" aria-hidden="true">
+        <label>Don&apos;t fill this out if you&apos;re human: <input name="bot-field" tabIndex={-1} autoComplete="off" /></label>
+      </p>
 
-      {status === "error" && error && (
-        <p className="text-[13px] leading-[1.5] text-[#a3402f]">{error}</p>
-      )}
+      {status === "error" && error && <p className="text-[13px] leading-[1.5] text-[#a3402f]">{error}</p>}
 
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className="self-start mt-2 border border-[#201f1d] px-7 py-2.5 text-[13px] uppercase tracking-[0.08em] font-[Lora] transition-colors hover:bg-[#201f1d] hover:text-[#f0ead6] disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {status === "sending" ? "Sending…" : "Send message"}
+      <button type="submit" disabled={status === "sending"} className="self-start mt-2 border border-[#201f1d] px-7 py-2.5 text-[13px] uppercase tracking-[0.08em] font-[Lora] transition-colors hover:bg-[#201f1d] hover:text-[#f0ead6] disabled:opacity-50 disabled:cursor-not-allowed">
+        {status === "sending" ? "Sending..." : "Send message"}
       </button>
     </form>
   );

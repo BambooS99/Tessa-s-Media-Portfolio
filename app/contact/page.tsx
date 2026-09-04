@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Nav from "../components/Nav";
 import ContactForm from "../components/ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Tessa Osborne about a photography session or project.",
+};
 
 export default function Contact() {
   return (

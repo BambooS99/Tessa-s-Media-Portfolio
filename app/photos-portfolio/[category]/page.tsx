@@ -1,8 +1,25 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Nav from "../../components/Nav";
 import { CATEGORIES, getCategoryPhotos } from "../../lib/photos";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const { category } = await params;
+  const title = CATEGORIES[category];
+
+  return title
+    ? {
+        title: `${title} Photography`,
+        description: `Browse ${title} photography by Tessa Osborne.`,
+      }
+    : {};
+}
 
 export default async function CategoryGallery({
   params,

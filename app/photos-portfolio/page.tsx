@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "../components/Nav";
+
+export const metadata: Metadata = {
+  title: "Photography Portfolio",
+  description: "Browse Tessa Osborne's wedding, freelance, and event photography.",
+};
 
 const CATEGORIES = [
   { href: "/photos-portfolio/wedding", label: "wedding" },

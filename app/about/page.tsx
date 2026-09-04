@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Nav from "../components/Nav";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Learn about Tessa Osborne and her approach to photography.",
+};
 
 export default function About() {
   return (

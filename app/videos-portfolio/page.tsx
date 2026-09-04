@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Nav from "../components/Nav";
+
+export const metadata: Metadata = {
+  title: "Video Portfolio",
+  description: "Watch video work by Tessa Osborne.",
+};
 
 export default function VideosPortfolio() {
   return (
