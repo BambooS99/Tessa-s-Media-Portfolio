@@ -23,10 +23,10 @@ export default function ContactForm() {
     new FormData(form).forEach((value, key) => body.append(key, String(value)));
 
     try {
-      const res = await fetch("/", {
+      const res = await fetch("/contact-form.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body,
+        body: body.toString(),
       });
 
       if (!res.ok) throw new Error("Something went wrong.");
