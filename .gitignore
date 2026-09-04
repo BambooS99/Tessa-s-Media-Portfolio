@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# raw video footage — not web-ready, way too large to commit (~1.4GB); videos
+# will be hosted externally (YouTube/Vimeo) and embedded instead
+/public/videos/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

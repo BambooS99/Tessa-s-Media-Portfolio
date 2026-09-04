@@ -19,7 +19,7 @@ export default async function CategoryGallery({
   const photos = getCategoryPhotos(category);
 
   return (
-    <main className="bg-[#f0ead6] text-[#201f1d] min-h-screen font-[Lora] pt-9 px-14 pb-20">
+    <main className="bg-[#f0ead6] text-[#201f1d] min-h-screen font-[Lora] pt-6 px-5 pb-14 sm:pt-8 sm:px-8 sm:pb-16 lg:pt-9 lg:px-14 lg:pb-20">
       <Nav />
       <div className="max-w-[1240px] mx-auto">
         <Link
@@ -28,7 +28,7 @@ export default async function CategoryGallery({
         >
           ‹ all photos
         </Link>
-        <h1 className="font-['Cormorant_Garamond',serif] font-bold text-[56px] leading-[0.95] tracking-[-0.01em] mb-11 capitalize">
+        <h1 className="font-['Cormorant_Garamond',serif] font-bold text-[34px] sm:text-[44px] lg:text-[56px] leading-[0.95] tracking-[-0.01em] mb-8 lg:mb-11 capitalize">
           {title}
         </h1>
 

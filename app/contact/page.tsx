@@ -3,14 +3,14 @@ import ContactForm from "../components/ContactForm";
 
 export default function Contact() {
   return (
-    <main className="bg-[#f0ead6] text-[#201f1d] min-h-screen font-[Lora] pt-9 px-14 pb-20">
+    <main className="bg-[#f0ead6] text-[#201f1d] min-h-screen font-[Lora] pt-6 px-5 pb-14 sm:pt-8 sm:px-8 sm:pb-16 lg:pt-9 lg:px-14 lg:pb-20">
       <Nav />
       <div className="max-w-[1240px] mx-auto">
-        <h1 className="font-['Cormorant_Garamond',serif] font-bold text-[72px] leading-[0.95] tracking-[-0.01em] my-11">
+        <h1 className="font-['Cormorant_Garamond',serif] font-bold text-[38px] sm:text-[52px] lg:text-[72px] leading-[0.95] tracking-[-0.01em] my-8 lg:my-11">
           let&apos;s talk
         </h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-start">
           <div>
             <p className="text-[13.5px] leading-[1.65] font-[Lora] max-w-[440px] mb-10">
               Whether you have a session in mind or just want to ask a question,

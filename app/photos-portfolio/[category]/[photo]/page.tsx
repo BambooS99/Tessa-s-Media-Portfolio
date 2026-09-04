@@ -23,16 +23,16 @@ export default async function Photo({
   }
 
   return (
-    <main className="bg-[#f0ead6] text-[#201f1d] min-h-screen font-[Lora] pt-9 px-14 pb-20">
+    <main className="bg-[#f0ead6] text-[#201f1d] min-h-screen font-[Lora] pt-6 px-5 pb-14 sm:pt-8 sm:px-8 sm:pb-16 lg:pt-9 lg:px-14 lg:pb-20">
       <Nav />
       <div className="max-w-[1240px] mx-auto">
         <Link
           href={`/photos-portfolio/${category}`}
-          className="inline-block text-[13px] uppercase tracking-[0.08em] font-[Lora] text-[#201f1d] hover:text-[#7d5411] mb-8"
+          className="inline-block text-[13px] uppercase tracking-[0.08em] font-[Lora] text-[#201f1d] hover:text-[#7d5411] mb-6 lg:mb-8"
         >
           ‹ back
         </Link>
-        <div className="relative w-full h-[78vh]">
+        <div className="relative w-full h-[50vh] sm:h-[65vh] lg:h-[78vh]">
           <Image
             src={`/images/photos/${encodeURIComponent(found.dirName)}/${encodeURIComponent(file)}`}
             alt={`${CATEGORIES[category]} photography by Tessa Osborne`}

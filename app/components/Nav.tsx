@@ -10,7 +10,7 @@ const CATEGORIES = [
 
 export default function Nav() {
   return (
-    <nav className="flex justify-center items-center gap-9 text-[13px] uppercase tracking-[0.08em] font-[Lora] mb-10">
+    <nav className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 sm:gap-x-9 px-2 text-[11px] sm:text-[13px] uppercase tracking-[0.06em] sm:tracking-[0.08em] font-[Lora] mb-8 sm:mb-10">
       <Link href="/" className={linkClasses}>
         welcome
       </Link>
